@@ -1,0 +1,56 @@
+import sqlite3
+
+
+conn = sqlite3.connect('northwind_small.sqlite3')
+
+# Create cursor
+curs = conn.cursor()
+
+# Ten most expensive items
+
+expensive_items = """
+SELECT *
+FROM Product
+ORDER BY UnitPrice DESC
+LIMIT 10
+"""
+curs.execute(expensive_items)
+print(curs.fetchall())
+
+# Average age of employee at the time they were hired
+
+avg_hire_age = '''
+SELECT AVG(HireDate - BirthDate)
+From Employee;
+'''
+curs.execute(avg_hire_age)
+print(curs.fetchall())
+
+
+# Ten most expensive items(per unit price)
+
+ten_most_expensive = '''
+SELECT ProductName,
+UnitPrice, Supplier.CompanyName
+FROM Product, Supplier WHERE Product.SupplierId = Supplier.Id
+ORDER BY UnitPrice DESC LIMIT 10;
+'''
+curs.execute(ten_most_expensive)
+print(curs.fetchall())
+
+# Largest Category
+largest_category = '''
+SELECT CategoryName,
+COUNT(CategoryName) AS "Products"
+FROM 'Product'
+JOIN Category
+ON Product.CategoryId = Category.Id
+GROUP BY CategoryName
+ORDER BY Products DESC
+LIMIT 1;
+'''
+curs.execute(largest_category)
+print(curs.fetchall())
+
+# Close
+curs.close()

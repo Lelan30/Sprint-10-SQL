@@ -1,0 +1,56 @@
+import sqlite3
+
+
+# DB Filepath
+# DB_FILEPATH = os.path.join(os.path.dirname(__file__), 'demo_data.sqlite3')
+
+# Connect to DataBase
+conn = sqlite3.connect('demo_data.sqlite3')
+
+# Create Cursor
+curs = conn.cursor()
+
+# Create Table
+query = '''
+CREATE TABLE IF NOT EXISTS demo (
+      S VARCHAR(1) NOT NULL,
+      X INT NOT NULL,
+      Y INT NOT NULL);
+'''
+results = curs.execute(query).fetchall()
+
+# Insert Data
+
+insertion_query = "INSERT INTO demo (S, X, Y) VALUES ('g', 3, 9), " \
+                  "('v', 5, 7), ('f', 8, 7) "
+
+result = curs.execute(insertion_query).fetchall()
+conn.commit()
+
+# Number of Rows
+row_count = '''
+    SELECT COUNT(*) AS "Number of Rows"
+    FROM demo;
+'''
+result = curs.execute(row_count).fetchall()
+print('Rows:', result)
+
+# How many rows are there if x and y are equal to 5
+xy_at_least_5 = '''
+    SELECT COUNT(*) FROM demo
+    WHERE x >= 5
+    AND y >= 5;
+'''
+result = curs.execute(xy_at_least_5).fetchall()
+print('Rows (X>=5 and y>=5):', result)
+
+# How many unique values of y are there
+unique_y = '''
+    SELECT COUNT(DISTINCT y) AS "Unique y's"
+    FROM demo;
+'''
+result = curs.execute(unique_y).fetchall()
+print('Rows with Unique y:', result)
+
+# Close
+curs.close()
