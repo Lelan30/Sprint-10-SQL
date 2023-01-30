@@ -1,0 +1,26 @@
+# Document Oriented Databases (NOSQL) ("Schema-Free")
+# (Common subset of key:value stores)
+
+# Document-Oriented databases aka: document stores
+# (great for storing large amounts of data; generally unstructured)
+# Non-Relational approach
+
+# Hash maps, Python dictionaries, JSON
+
+# flexibly store data without specifying structure
+
+# Consider the following: (Relational or Non-Relational)
+
+# 1) A bank, with mission-critical data demanding high reliability and integrity;
+# (RELATIONAL: Well defined, Upfront schema is fine, Reliability of SQL)
+
+# 2) A 2-person startup, rapidly developing a prototype in a week to demonstrate to investors
+# (EITHER WAY: Document-Orient Skewed, No Schema needed, Likely to rewrite everything)
+
+# 3) A medium size company, profitable and established in their niche, building a new product offering
+# (EITHER WAY: Document-Orient Skewed, PostGreSQL scaled up fine, plenty of time to plan)
+
+# 4) A large company, in the same situation as the prior medium size company
+# (RELATIONAL: Large company, Big Data usage, Even large companied could use a schema)
+
+

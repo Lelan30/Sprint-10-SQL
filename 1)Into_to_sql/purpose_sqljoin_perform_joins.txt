@@ -1,0 +1,75 @@
+# JOIN: get data from seperate tables into a common key
+
+# Cross Join: "Cartesian Product" combined each X_i with each y_j
+# then multiply out number of rows returned (n*m)
+# (SELDOM USED OUTSIDE OF TESTING)
+
+# Left Outter Join: returns all rows of X, withe columns populated 
+# with Y values, when commmom key id match but nulls do not
+# (USED WHEN APPROPRIATE)
+
+# Right Outter Join: similar to left, but uses m rows of Y
+# (USED WHEN APPROPRIATE)
+
+# Inner Join: only return rows both in X and Y, reducing number of 
+# rows returned, gurenteeing no null values
+# (MOST PRACTICAL)
+# equi-join(specifies what should be equal)
+# natural join(automatically joins matching column names
+# (GENERALLY DISCOURAGED))
+
+import mysql.connector
+from mysql.connector import ERROR
+import pandas as pd
+
+''' The full syntaxe to understand what an inner join is
+'''
+SELECT charactercreator_character.name, charactercreator_character_inventory.id
+FROM charactercreator_character
+INNER JOIN charactercreator_character_inventory ON
+charactercreator_character.character_id = charactercreator_character_invetory.character_id;
+
+'''This query can be made easier using table aliases, replacing
+explicit join with and implicit inner join using WHERE
+'''
+SELECT character.name, inventory.id
+FROM charactercreator_character AS character,
+charactercreator_character_invetory AS invetory
+WHERE charactercreator.id = invetory.character_id;
+
+''' Both above queries are identical, same number of rows for
+rpg_db.sqlite3 data in module. lod the first 10:
+'''
+SELECT character.name, invetory.id
+FROM charactercreator_character AS character,
+charactercreator_character_invetory AS invetory
+WHERE character.character_id = invetory.character_id
+LIMIT 10;
+
+'''Returned: character names and thier unique inventory id values
+each correspong to an actual item, get the details from another table
+'''
+SELECT character.name, item.name
+FROM charactercreator_character AS character
+charactercreator_character_invetory AS inventory
+armory_item AS item
+WHERE character.character_id = invetory.character_id
+AND inventory.item_id = item.item_id
+LIMIT 10
+
+'''All names for both characters and items are automatically generated
+reselts look good, succesfully joined across three tables,
+connecting characters to the items they owned
+'''
+# many-to-many: one character can have many items, and one item can be had
+# by many characters, an intermediary charactercreator_character_invetory
+# shows this relationship
+
+# One-to-One: each entry has exactly one corresponding row in each table
+
+# One-to-Many: each entry in first table can have multiple corresponding
+# rows in the second table
+
+
+
+

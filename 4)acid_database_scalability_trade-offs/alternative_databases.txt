@@ -1,0 +1,27 @@
+# Make Informed Decisions About Alternative Databases
+
+# Build quieries in your aplication rather than trusting,
+# what they pass in
+
+# Map Reduce: provides the framework aloows specification of a job,
+# that is then distributed by larger worker nodes
+# (Horizontal Scalibility)
+# (Splits data randomly)
+
+# Map: each work gets a piece of input data,
+# applies the given 'map' function to process data
+
+# Shuffle: workers redistribute data based on key of,
+# output function
+# (Collect common data in single worker nodes)
+
+# Reduce: workers concurrently process output data,
+# final output combined in master node
+
+
+
+# Functional Programming: Creating and manipulating functions with,
+# higher-level order functions and reduce
+
+
+

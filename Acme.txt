@@ -1,0 +1,75 @@
+import random
+
+'''Class to set Product default perameters
+'''
+
+
+class Product():
+
+    def __init__(self, name, price=10, weight=20, flammability=0.5,
+                 identifier=random.randint(1000000, 9999999)):
+        self.name = name
+        self.price = price
+        self.weight = weight
+        self.flammability = flammability
+        self.identifier = identifier
+
+    def stealability(self):
+        """Calculates whether a Product will be stolen
+        based on price and weight."""
+        stealable = self.price / self.weight
+        if (stealable < 0.5):
+            chance = "Not so stealable..."
+            return chance
+        elif (stealable >= 0.5) and (stealable < 1.0):
+            chance = "Kinda stealable."
+            return chance
+        else:
+            return "Very stealable!"
+
+    pass
+
+    def explode(self):
+        explosive_meter = self.flammability * self.weight
+        if (explosive_meter < 10):
+            chance = "...fizzle."
+            return chance
+        elif (explosive_meter >= 10) and (explosive_meter < 50):
+            chance = "...boom!"
+            return chance
+        else:
+            return "...BABOOM!!"
+
+    pass
+
+# Default price 10, weight 10, flammability 0.5
+
+
+class BoxingGlove(Product):
+    def __init__(self, name, price=10, weight=10, flammability=0.5):
+        super().__init__(self, price, weight, flammability)
+        self.price = price
+        self.name = name
+        self.weight = weight
+
+    def explode(self):
+        return "...it's a glove."
+
+    def punch(self):
+        if (self.weight < 5):
+            return "That tickles."
+
+        elif (self.weight >= 5) and (self.weight < 15):
+            return "Hey that hurt!"
+
+        else:
+            return "OUCH!"
+
+    pass
+
+
+if __name__ == '__main__':
+    product1 = [
+        {"name": "A Cool Toy", "price": "10", "weight": "20",
+         "flammability": "0.5", "glove": "10"},
+    ]

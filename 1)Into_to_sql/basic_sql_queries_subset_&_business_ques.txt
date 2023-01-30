@@ -1,0 +1,33 @@
+# SQL is a standard, and computational implementation of relational algebra
+# Relational Algebra: datum are considered members of sets,
+# data with the same overall structure(attributes) are members
+# of the same data sets.
+# Columns shared with keys can relate across all datasets
+
+#  \Pi_{name,id}(\sigma_{state=CA}(Customers)):
+# Translates as: "Get the names and ids of all customers from Cali"
+# The pi symbol indicates choosing attributes(projection)
+# The sigma indicates selection(setting conditions)
+
+# SELECT is the equivilent to the projection of (pi), and WHERE is
+# the equivilent of selection (in relational databases)
+
+# SQL = DECLARATIVE
+
+import sqlite3
+conn = sqlite3.connect('rpg_db.sqlite3')
+curs = conn.cursor()
+query = 'SELECT COUNT(*) FROM armory_item;'
+curs.execute(query)
+curs.execute(query).fetchall()
+
+''' General Usage patters is:
+1)Import library
+2)Instatiate a connect to database(may require authentication)
+3)Create a cursor or pointer to database (Can be multiple)
+4)Execute query using cursor
+5)Fetch results (if relative)
+'''
+#Challenge:
+SELECT names(*), adresses(*) FROM address, constumer_since
+WHERE state='Colorado'

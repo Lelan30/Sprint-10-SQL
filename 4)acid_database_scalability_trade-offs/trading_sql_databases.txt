@@ -1,0 +1,14 @@
+# Advantages and Disadvantages of Traditional SQL
+
+# ALTER:TABLE: update schema (may not preserve and loose data)
+# The need to fit and index all keys limits ability to grow database (RAM)
+
+# ACID:
+# Atomicity- transaction functions as a 'unit', suceeds or fails
+# Consistency- transaction can only change from valid states
+# Isolation- concurrent transactions are isolated not ran sequentially
+# Durability- finished transactions survive runtime system failure
+
+# Set of guarantees provide by use of transaction,
+#  ensuring data is always in valid state; even through failure
+

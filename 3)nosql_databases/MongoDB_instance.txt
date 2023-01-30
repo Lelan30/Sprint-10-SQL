@@ -1,0 +1,11 @@
+# MongoDB (Big JSON is the Cloud)
+# Easily to have data in cloud
+
+# Save and retieve JSON-serialized data, at scale, over network
+
+# Connect to MongoDB
+mongosh "mongodb+srv://cluster0.ijcgupn.mongodb.net/myFirstDatabase" --apiVersion 1 --username Lelan930
+
+import pymongo 
+mongodb+srv://Lelan930:Books817@cluster0.iapf3z5.mongodb.net/?retryWrites=true&w=majority
+db = client.test

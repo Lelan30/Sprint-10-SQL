@@ -1,0 +1,23 @@
+# import pytest
+from acme import Product
+# from acme_report import generate_products, ADJECTIVES, NOUNS
+
+
+def test_default_product_price():
+    ''' test default product price being 10.'''
+    prod = Product('Test Product')
+    assert prod.price == 10
+
+
+def test_product_flammability():
+    prod = Product('Test Product')
+    assert prod.flammability == 0.5
+
+
+def test_weight_range():
+    prod = Product('Test Product')
+    assert prod.weight <= 10
+
+
+def test_default_generate_products():
+    pass
